@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 export default () => {
     const classes = useStyles();
     return (
-        <AppBar position="static" style={{ background: '#115E7C' }}>
+        <AppBar position="static" style={{ background: '#48466D' }}>
             <Toolbar>
                 <Typography variant="h6" color="inherit" className={classes.grow}>
                     EOG React Visualization Assessment

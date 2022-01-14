@@ -3,17 +3,15 @@
 /* eslint-disable quotes */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LinearProgress, Grid, Container } from '@material-ui/core/';
+import { LinearProgress, Grid } from '@material-ui/core/';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Select from 'react-select';
 import { useQuery, useSubscription } from 'urql';
-import makeAnimated from 'react-select/animated';
 import CardCharts from '../components/MetricCard';
 import MetricChart from '../components/MetricChart';
 import { IState } from '../Redux/Store';
 import { actions } from '../Redux/Reducers/Reducer';
 
-const animatedComponents = makeAnimated();
 const currentTime = new Date().valueOf();
 const passTime = 1800000;
 
@@ -71,6 +69,7 @@ const getMetrics = (state: IState) => {
 const EOGMetrics = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const isMultiSelect = true;
     const [selectedChartOptions, setSelectedChartsOptions] = useState([]);
     const [dropDownOptions, setDropDownOptions] = useState([]);
     const { allMetrics, multipleMeasurements, liveData } = useSelector(getMetrics);
@@ -93,8 +92,12 @@ const EOGMetrics = () => {
         query: queryMetricSubscription,
     });
 
-    const handleChange = (selectedOption) => {
-        setSelectedChartsOptions(selectedOption === null ? [] : selectedOption);
+    const selectedOptions = (options) => {
+        if (options === null) {
+            setSelectedChartsOptions([]);
+        } else {
+            setSelectedChartsOptions(options);
+        }
     };
 
     useEffect(() => {
@@ -144,17 +147,19 @@ const EOGMetrics = () => {
     }
     return (
         <>
-            <Container maxWidth="lg">
-                <Grid item xs={10} className={classes.select}>
-                    <Select
-                        onChange={handleChange}
-                        closeMenuOnSelect
-                        components={animatedComponents}
-                        isMulti
-                        options={dropDownOptions}
-                    />
+            <Grid container spacing={3}>
+                <Grid item xs={3} />
+                <Grid item xs={6}>
+                    <div style={{ marginTop: '30px' }}>
+                        <Select
+                            onChange={selectedOptions}
+                            isMulti={isMultiSelect}
+                            closeMenuOnSelect
+                            options={dropDownOptions}
+                        />
+                    </div>
                 </Grid>
-            </Container>
+            </Grid>
             <Grid container spacing={1} className={classes.select}>
                 {selectedChartOptions?.map((c, i) => {
                     return (
