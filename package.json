@@ -17,6 +17,7 @@
     "@types/react-redux": "^7.1.16",
     "@types/recharts": "^1.8.19",
     "@types/redux": "^3.6.0",
+    "gh-pages": "^3.2.3",
     "graphql": "^15.5.0",
     "isomorphic-fetch": "^3.0.0",
     "moment": "^2.29.1",
