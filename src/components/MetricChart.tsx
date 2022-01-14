@@ -10,7 +10,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer, Tooltip } from 'recharts';
-
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
@@ -92,7 +91,7 @@ const MetricChart: React.FC<Props> = (props) => {
         chartMetricData = mergeObjectsInUnique(insertLiveData);
     }, [liveData]);
     // Saample colors
-    const colors = ['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#654321', '#a65628', '#f781bf'];
+    const colors = ['#000000', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#654321', '#a65628', '#f781bf'];
     if (selectedChartOptions.length === 0) {
         return <p style={{ textAlign: 'center' }}>Please select atleast one metric from the dropdown</p>;
     }
