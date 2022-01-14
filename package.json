@@ -1,5 +1,6 @@
 {
-  "name": "react-graphql-eog",
+  "homepage": "http://harshaannapureddy.github.io/eog-graphql",
+  "name": "eog-graphql",
   "version": "0.1.0",
   "private": true,
   "author": "Harshavardhan",
